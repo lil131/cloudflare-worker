@@ -20,51 +20,32 @@ async function handleRequest(request) {
       response = new Response(JSON.stringify(links), { 
         headers: { "content-type": "application/json" }
       });
-    } 
-    // else {
-    //   // trial
-    //   response = new Response(await fetch(STATIC_LINK, {
-    //     method: 'GET',
-    //     }), {
-    //       headers: { 'Content-Type': 'text/html' }
-    //     }
-    //   );
-
-    //   // real res
-    //   // response = await getStaticHTML();
-    // } 
+    }  
     else {
-      response = new Response("NOT FOUND", { status: 404 });
-    };
+      response = await fetch(STATIC_LINK, {
+        headers: { "content-type": "text/html" }
+      });
+    }
   } catch {
     response = new Response("ERROR", { status: 500 });
   }
   return response;
 };
 
-// async function getStaticHTML() {
-//   try {
-//     const res = await fetch(STATIC_LINK, {
-//       method: 'GET',
-//       headers: { 'Content-Type': 'text/html' }
-//     });
-
-//   } catch(err) {
-    
-//   }
-// };
 
 // class LinksTransformer {
 //   constructor(links) {
-//     this.links = links
+//     this.links = links;
 //   }
   
+//   // Target the div#links selector, and add in a new a for each link in your API using HTMLRewriter.
 //   async element(element) {
-//     // Your code
+//     console.log(element.tagName)
 //   }
 // }
 
-// class ElementHandler {
+// class HTMLHandler {
+
 //   element(element) {
 //     // An incoming element, such as `div`
 //     console.log(`Incoming element: ${element.tagName}`)
@@ -80,7 +61,7 @@ async function handleRequest(request) {
 // }
 
 // async function handleRequest(req) {
-//   const res = await fetch(req)
-
-//   return new HTMLRewriter().on("div", new ElementHandler()).transform(res)
+//   const res = await fetch(req);
+//   return res;
+//   // return new HTMLRewriter().on("div#links", new LinksTransformer()).transform(res);
 // }
