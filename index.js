@@ -19,7 +19,7 @@ async function handleRequest(request) {
   try {
     if (link.pathname === '/links') {
       return new Response(JSON.stringify(LINKS), { 
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json;charset=UTF-8" }
       });
     }  
     else {
@@ -40,12 +40,13 @@ class LinksTransformer {
   
   //add in a new a for each link in your API using HTMLRewriter.
   async element(element) {
-    const myLinks = LINKS;
-    // let myLinks;
-    // const response = await fetch(this.link, { 
-    //   headers: { "Content-Type": "application/json" }
-    // });
-    // myLists = JSON.parse(await response.json());
+    // const myLinks = LINKS;
+    let myLinks;
+    console.log(this.link)
+    const response = await fetch(this.link, { 
+      headers: { "Content-Type": "application/json;charset=UTF-8" }
+    });
+    myLists = JSON.parse(await response.json());
 
     myLinks.forEach(link => {
       element.append(`<a href=${link.url}>${link.name}</a>`, { html: Boolean });
