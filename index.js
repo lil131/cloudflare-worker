@@ -42,11 +42,11 @@ async function getStatic() {
     .on("div#links", new LinksHandler())
     .on("div#profile", new AttrRemover("style"))
     .on("img#avatar", new AttrRewriter("src", avatar_src))
-    .on("h1#name", new AttrRewriter("innerText", "LLL"))
+    .on("h1#name", new ContentEdditor("add", "Linlu Liu"))
     .on("div#social", new AttrRemover("style"))
-    .on("div#social", new ContentAdder(`<a href="https://www.linkedin.com/in/linlu-liu-707b5b186/">${SVG_linkedin}</a>`))
-    .on("div#social", new ContentAdder(`<a href="https://github.com/lil131">${SVG_github}</a>`))
-    .on("title", new ContentAdder("Linlu Liu"))
+    .on("div#social", new ContentEdditor("add", `<a href="https://www.linkedin.com/in/linlu-liu-707b5b186/">${SVG_linkedin}</a>`))
+    .on("div#social", new ContentEdditor("add", `<a href="https://github.com/lil131">${SVG_github}</a>`))
+    .on("title", new ContentEdditor("set", "Linlu Liu"))
     .on("body", new AttrRewriter("style", "background-color : #73C3D5"))
     .transform(res);
 }
@@ -86,13 +86,18 @@ class AttrRewriter {
   };
 }
 
-class ContentAdder {
-  constructor(content) {
+class ContentEdditor {
+  constructor(action, content) {
+    this.action = action;
     this.content = content;
   }
 
   element(element) {
-    element.append(this.content, { html: Boolean })
+    if (this.action === 'add') {
+      element.append(this.content, { html: Boolean });
+    } 
+    if (this.action === 'set') {
+      element.setInnerContent(this.content);
+    }
   }
 }
-
