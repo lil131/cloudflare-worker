@@ -1,12 +1,12 @@
-# Cloudflare Workers project
+# Cloudflare Worker project
 
 ## Introduction
 
 This project is to deploy a Cloudflare Worker in order to build a linktree-style website.
 
-It creates a worker using Cloudflare Wrangler and responds to two kinds of requests, one to generate a JSON API (defined below), and second, to serve an HTML page.
+It creates a worker using **Cloudflare Wrangler** and responds to two kinds of requests, one to generate a JSON API (defined below), and second, to serve an HTML page.
 
-### Response with a JSON API
+### Response with a JSON
 An array of links is defined in the worker as below: 
 ```json
 [
@@ -28,10 +28,10 @@ A request handler is set up to respond to the path `/links`, and return the arra
 The response has `application/json;charset=UTF-8` as its `Content-Type`.
 
 ### Response with an HTML page
-If the path requested _is not_ `/links`, the application will render a static HTML page using HTMLRewriter, by doing the following steps:
+If the path requested _is not_ `/links`, the application will render a static HTML page with **HTMLRewriter**, by doing the following steps:
 
 1. Retrieve a static HTML page from `https://static-links-page.signalnerve.workers.dev`.
-2. Get the predefined array `links`, target the `div#links` selector, and add in a new `a` for each link.
+2. Get the pre-defined array `links`, target the `div#links` selector, and add in a new `a` for each link.
 3. Remove the `display: none` from the `div#profile` container, and inside of it, modify the two child elements to show an avatar and name.
 4. Remove the `display: none` style from `div#social`, and add three social links as children to the container using `<a>` tag with `svg` icons. SVGs are from https://simpleicons.org.
 5. Update the content of `<title>`.
@@ -39,7 +39,7 @@ If the path requested _is not_ `/links`, the application will render a static HT
 4. Return the transformed HTML page as the response from the Worker
 
 ## Instruction
-Reference the [Getting Start](https://developers.cloudflare.com/workers/learning/getting-started) guide the detailed steps of setting up and deploying Workers applications.
+Reference the [Getting Start](https://developers.cloudflare.com/workers/learning/getting-started) guide the detailed steps of how to sett up and deploy Workers.
 
 ### test
 To test the application locally, run `wrangler dev`. 
