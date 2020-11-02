@@ -1,6 +1,6 @@
 name = "my-worker"
 type = "webpack"
-account_id = "504abd80192d209fe99522f1bde6ed92"
+account_id = "xxx"
 workers_dev = true
 route = ""
 zone_id = ""
