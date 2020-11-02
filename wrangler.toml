@@ -1,6 +1,6 @@
 name = "my-worker"
-type = "javascript"
-account_id = "linluliuse@gmail.com"
+type = "webpack"
+account_id = "504abd80192d209fe99522f1bde6ed92"
 workers_dev = true
 route = ""
 zone_id = ""
