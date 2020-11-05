@@ -1,7 +1,7 @@
 const LINKS = [
   { "name": "cloudflare", "url": "https://www.cloudflare.com/" },
   { "name": "github", "url": "https://www.github.com" },
-  { "name": "cloudflare assignment", "url": "https://github.com/cloudflare-hiring/cloudflare-2020-general-engineering-assignment/#deploy-a-json-api" },
+  { "name": "cloudflare wrangler", "url": "https://github.com/cloudflare/wrangler" },
 ];
 
 const STATIC_LINK = 'https://static-links-page.signalnerve.workers.dev';

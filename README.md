@@ -20,7 +20,7 @@ An array of links is defined in the worker as below:
     },
     {
         "name": "cloudflare assignment",
-        "url": "https://github.com/cloudflare-hiring/cloudflare-2020-general-engineering-assignment/#deploy-a-json-api"
+        "url": "https://github.com/cloudflare/wrangler"
     }
 ]
 ```
