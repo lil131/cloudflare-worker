@@ -19,7 +19,7 @@ An array of links is defined in the worker as below:
         "url": "https://www.github.com"
     },
     {
-        "name": "cloudflare assignment",
+        "name": "cloudflare wrangler",
         "url": "https://github.com/cloudflare/wrangler"
     }
 ]
